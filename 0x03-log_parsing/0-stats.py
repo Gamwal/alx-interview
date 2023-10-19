@@ -21,9 +21,13 @@ try:
     for line in sys.stdin:
         if re.match(pattern, line):
             nline = line.split()
-            codes[nline[-2]] += 1
-            file_size += int(nline[-1])
-            count += 1
+            try:
+                if type(int(nline[-2])) is int:
+                    codes[nline[-2]] += 1
+                    file_size += int(nline[-1])
+                    count += 1
+            except ValueError:
+                pass
 
             if count == 10:
                 print(f"File size: {file_size}")
