@@ -13,13 +13,13 @@ def canUnlockAll(boxes):
 
     while keys:
         box = keys.pop()
-        visited.add(box)
 
         try:
             for key in boxes[box]:
+                visited.add(box)
                 if key not in visited:
                     keys.add(key)
         except IndexError:
             pass
 
-    return len(visited) - len(boxes) in [0, 1]
+    return len(visited) == len(boxes)
