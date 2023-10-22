@@ -16,10 +16,9 @@ def canUnlockAll(boxes):
 
         try:
             for key in boxes[box]:
-                visited.add(box)
                 if key not in visited:
                     keys.add(key)
+            visited.add(box)
         except IndexError:
             pass
-
     return len(visited) == len(boxes)
