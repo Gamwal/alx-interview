@@ -16,8 +16,11 @@ def canUnlockAll(boxes):
         old_length = len(old_keys)
 
         for item in old_keys:
-            for new_key in boxes[item]:
-                keys.add(new_key)
+            try:
+                for new_key in boxes[item]:
+                    keys.add(new_key)
+            except IndexError:
+                pass
 
         if old_length == len(keys):
             updated = False
