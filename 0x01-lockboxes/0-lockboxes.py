@@ -9,23 +9,14 @@ def canUnlockAll(boxes):
     function to check if all boxes can be unlocked
     """
     keys = set([0])
-    updated = True
+    visited = set()
 
-    while updated:
-        old_keys = list(keys)
-        old_length = len(old_keys)
+    while keys:
+        box = keys.pop()
+        visited.add(box)
 
-        for item in old_keys:
-            try:
-                for new_key in boxes[item]:
-                    keys.add(new_key)
-            except IndexError:
-                pass
+        for key in boxes[box]:
+            if key not in visited:
+                keys.add(key)
 
-        if old_length == len(keys):
-            updated = False
-
-    if len(keys) >= len(boxes):
-        return True
-    else:
-        return False
+    return len(visited) == len(boxes)
