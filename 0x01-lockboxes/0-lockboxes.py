@@ -25,7 +25,7 @@ def canUnlockAll(boxes):
         if old_length == len(keys):
             updated = False
 
-    if len(keys) == len(boxes):
+    if len(keys) >= len(boxes):
         return True
     else:
         return False
