@@ -21,7 +21,5 @@ def canUnlockAll(boxes):
                     keys.add(key)
         except IndexError:
             pass
-    print(len(visited))
-    print(len(boxes))
 
     return len(visited) - len(boxes) in [0, 1]
